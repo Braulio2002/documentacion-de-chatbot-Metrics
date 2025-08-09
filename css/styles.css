@@ -1,0 +1,68 @@
+/* ==========================================================================
+   DOCUMENTACIÓN INTERACTIVA - CHATBOT IA
+   Tema Oscuro 3D con Efectos Modernos
+   
+   Este archivo importa todos los módulos CSS organizados por funcionalidad.
+   Cada módulo está en su propio archivo para mejor mantenibilidad y escalabilidad.
+   ========================================================================== */
+
+/* ==========================================================================
+   IMPORTS - MÓDULOS CSS
+   ========================================================================== */
+
+/* 01. Variables y Sistema de Diseño */
+@import url('01-variables.css');
+
+/* 02. Reset y Estilos Base */
+@import url('02-reset-base.css');
+
+/* 03. Layout y Estructura Principal */
+@import url('03-layout.css');
+
+/* 04. Sidebar y Navegación */
+@import url('04-sidebar.css');
+
+/* 05. Tipografía y Encabezados */
+@import url('05-typography.css');
+
+/* 06. Componentes Principales (Cards, Badges) */
+@import url('06-components.css');
+
+/* 07. Componentes de Diagrama */
+@import url('07-diagram.css');
+
+/* 08. Componentes de Acordeón */
+@import url('08-accordion.css');
+
+/* 09. Componentes de Tabs */
+@import url('09-tabs.css');
+
+/* 10. Componentes de Tabla */
+@import url('10-tables.css');
+
+/* 11. Componentes de Timeline */
+@import url('11-timeline.css');
+
+/* 12. Componentes de Chart */
+@import url('12-charts.css');
+
+/* 13. Componentes de Listas Personalizadas */
+@import url('13-lists.css');
+
+/* 14. Componentes de Código */
+@import url('14-code.css');
+
+/* 15. Componentes de Casos de Uso */
+@import url('15-use-cases.css');
+
+/* 16. Utilidades y Clases Helper */
+@import url('16-utilities.css');
+
+/* 17. Scrollbar Personalizada */
+@import url('17-scrollbar.css');
+
+/* 18. Responsive Design */
+@import url('18-responsive.css');
+
+/* 19. Three.js Background - Fondo 3D Interactivo */
+@import url('19-threejs-background.css'); 

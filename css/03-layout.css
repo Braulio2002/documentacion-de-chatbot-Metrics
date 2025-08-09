@@ -1,0 +1,77 @@
+/* ==========================================================================
+   LAYOUT - ESTRUCTURA PRINCIPAL
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
+/* ==========================================================================
+   CONTENIDO PRINCIPAL
+   ========================================================================== */
+.main-content {
+    flex: 1;
+    padding: var(--spacing-lg);
+    background: transparent;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        margin-left: 0px;
+        padding: var(--spacing-xl) var(--spacing-2xl);
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-content {
+        padding: var(--spacing-2xl) var(--spacing-2xl);
+    }
+}
+
+/* ==========================================================================
+   SECCIONES DE CONTENIDO
+   ========================================================================== */
+.content-section {
+    display: none;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   SISTEMA DE GRID
+   ========================================================================== */
+.grid {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 

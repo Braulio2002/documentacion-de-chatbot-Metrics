@@ -1,0 +1,39 @@
+/* ==========================================================================
+   UTILIDADES - CLASES HELPER
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: var(--spacing-md); }
+.mb-6 { margin-bottom: var(--spacing-lg); }
+.mb-8 { margin-bottom: var(--spacing-xl); }
+.p-4 { padding: var(--spacing-md); }
+.p-6 { padding: var(--spacing-lg); }
+.rounded-lg { border-radius: var(--radius-md); }
+.rounded-xl { border-radius: var(--radius-lg); }
+.shadow-md { box-shadow: var(--shadow-md); }
+
+/* ==========================================================================
+   EFECTOS ADICIONALES
+   ========================================================================== */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-normal);
+}
+
+.glow-effect:hover::after {
+    opacity: 0.1;
+} 

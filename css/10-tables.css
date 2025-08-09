@@ -1,0 +1,48 @@
+/* ==========================================================================
+   COMPONENTES DE TABLA
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.table-container {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: var(--bg-tertiary);
+}
+
+.table th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table td {
+    padding: var(--spacing-lg) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover td {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.table td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+} 

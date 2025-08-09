@@ -1,0 +1,94 @@
+/* ==========================================================================
+   VARIABLES CSS - SISTEMA DE DISEÑO
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+:root {
+    /* ===== PALETA DE COLORES ===== */
+    /* Colores principales */
+    --primary-color: #00d4ff;
+    --primary-light: #4ddbff;
+    --primary-dark: #0099cc;
+    --primary-glow: rgba(0, 212, 255, 0.25);
+    
+    /* Colores de fondo - Jerarquía de profundidad */
+    --bg-primary: #0a0a0a;        /* Fondo principal - más profundo */
+    --bg-secondary: #111111;       /* Fondo secundario */
+    --bg-tertiary: #1a1a1a;        /* Fondo terciario */
+    --bg-card: #1e1e1e;           /* Fondo de tarjetas */
+    --bg-sidebar: #0f0f0f;        /* Fondo del sidebar */
+    
+    /* Colores de texto - Jerarquía de importancia */
+    --text-primary: #ffffff;       /* Texto principal */
+    --text-secondary: #b3b3b3;     /* Texto secundario */
+    --text-muted: #808080;         /* Texto atenuado */
+    --text-accent: #00d4ff;        /* Texto de acento */
+    
+    /* Colores de acento - Para estados y categorías */
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
+    --accent-orange: #f97316;
+    --accent-green: #10b981;
+    --accent-yellow: #f59e0b;
+    
+    /* ===== SISTEMA DE SOMBRAS ===== */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px var(--primary-glow);
+    --shadow-glow-strong: 0 0 40px rgba(0, 212, 255, 0.5);
+    
+    /* ===== GRADIENTES ===== */
+    --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+    
+    /* ===== BORDES ===== */
+    --border-color: #333333;
+    --border-light: #404040;
+    --border-accent: #00d4ff;
+    
+    /* ===== SISTEMA DE TRANSICIONES ===== */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* ===== EFECTOS 3D ===== */
+    --transform-3d: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    --transform-hover: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+    
+    /* ===== ESPACIADO ===== */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* ===== BORDER RADIUS ===== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* ===== TIPOGRAFÍA ===== */
+    --font-family: 'Inter', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.25rem;
+    
+    /* ===== Z-INDEX ===== */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+} 

@@ -1,0 +1,100 @@
+/* ==========================================================================
+   COMPONENTES DE DIAGRAMA
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.diagram-container {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--bg-tertiary);
+    position: relative;
+    overflow: hidden;
+}
+
+.diagram-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, var(--primary-glow) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    position: relative;
+    z-index: var(--z-sticky);
+}
+
+@media (min-width: 768px) {
+    .diagram-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.diagram-node {
+    background: var(--gradient-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.diagram-node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.diagram-node:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    border-color: var(--border-accent);
+}
+
+.diagram-node:hover::before {
+    opacity: 0.1;
+}
+
+.diagram-node.highlight {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.diagram-info {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--text-accent);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 500;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-accent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+} 

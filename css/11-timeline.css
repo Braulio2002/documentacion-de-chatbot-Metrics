@@ -1,0 +1,86 @@
+/* ==========================================================================
+   COMPONENTES DE TIMELINE
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+}
+
+.timeline-dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: bold;
+    z-index: var(--z-sticky);
+    margin-right: var(--spacing-lg);
+    box-shadow: var(--shadow-glow);
+    position: relative;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.1; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+.timeline-dot.completed {
+    background: var(--gradient-primary);
+}
+
+.timeline-dot.in-progress {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+}
+
+.timeline-dot.planned {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.timeline-content h4 {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+} 

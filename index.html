@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Interactiva: Chatbot IA para Google Sheets</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Three.js Background Canvas -->
+    <div id="threejs-background"></div>
+    
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">Chatbot IA</h1>
+                <p class="sidebar-subtitle">Documentación del Sistema</p>
+            </div>
+            
+            <nav aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li><a href="#overview" class="nav-link active">📊 Visión General</a></li>
+                    <li><a href="#architecture" class="nav-link">🏗️ Arquitectura</a></li>
+                    <li><a href="#implementation" class="nav-link">⚙️ Implementación</a></li>
+                    <li><a href="#usage" class="nav-link">💡 Uso y Mantenimiento</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>Tender Store - 2025</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <h2 class="section-title">Visión General del Sistema</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">🎯 Objetivo</h3>
+                    <p class="card-text">Desarrollar un sistema de chatbot inteligente integrado nativamente en Google Sheets usando Google Apps Script y la API de Gemini para proporcionar análisis en tiempo real, recomendaciones y respuestas contextualizadas sobre los datos de marketing.</p>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">🛠️ Stack Tecnológico</h3>
+                        <ul class="tech-list">
+                            <li class="tech-item"><span class="badge">Backend</span> Google Apps Script</li>
+                            <li class="tech-item"><span class="badge">IA</span> Gemini AI API</li>
+                            <li class="tech-item"><span class="badge">Datos</span> Google Sheets API</li>
+                            <li class="tech-item"><span class="badge">UI</span> HTML Service & Material Design</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">✨ Ventajas de Gemini</h3>
+                        <ul class="advantages-list card-text">
+                            <li>Integración nativa con Google Workspace.</li>
+                            <li>Mejor comprensión del contexto de Sheets.</li>
+                            <li>Menor latencia en el ecosistema Google.</li>
+                            <li>Costo optimizado para usuarios de Workspace.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">🗺️ Roadmap 2025</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot completed">✓</div>
+                            <div class="timeline-content">
+                                <h4>Q1 2025 - ✅ Completado</h4>
+                                <p>Integración básica con Gemini y chat funcional.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot in-progress">!</div>
+                            <div class="timeline-content">
+                                <h4>Q2 2025 - 🚧 En Progreso</h4>
+                                <p>Análisis predictivo avanzado y alertas automáticas.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot planned">📋</div>
+                            <div class="timeline-content">
+                                <h4>Q3 2025 - 📋 Planeado</h4>
+                                <p>Integración con Google Analytics y exportación a Data Studio.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot planned">🔮</div>
+                            <div class="timeline-content">
+                                <h4>Q4 2025 - 🔮 Futuro</h4>
+                                <p>Machine Learning personalizado y API REST.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section id="architecture" class="content-section">
+                <h2 class="section-title">Arquitectura y Patrones de Diseño</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">Diagrama de Arquitectura de Alto Nivel</h3>
+                    <p class="card-text mb-6">Esta es una representación visual de cómo los componentes del sistema interactúan entre sí. Pase el cursor sobre un nodo para ver su descripción.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-grid">
+                            <div class="diagram-node" data-info="El usuario interactúa con la aplicación a través de la interfaz.">
+                                👤 Usuario
+                            </div>
+                            <div class="diagram-node col-span-3" data-info="La interfaz de usuario, construida con HTML Service, que se muestra en la barra lateral de Google Sheets.">
+                                🖥️ Sidebar HTML (UI)
+                            </div>
+                            <div class="diagram-node col-span-4" data-info="El controlador principal (Code.gs) que orquesta las llamadas a otros servicios.">
+                                🎛️ Code.gs (Controller)
+                            </div>
+                            <div class="diagram-node" data-info="Servicio para interactuar con la API de Gemini AI.">
+                                🤖 GeminiService
+                            </div>
+                            <div class="diagram-node" data-info="Servicio para gestionar la obtención y el almacenamiento en caché de los datos.">
+                                📊 DataService
+                            </div>
+                            <div class="diagram-node" data-info="Servicio para realizar análisis sobre los datos.">
+                                📈 AnalyticsService
+                            </div>
+                            <div class="diagram-node" data-info="Servicio para interactuar con las hojas de Sheets que actúan como base de datos.">
+                                💾 DatabaseService
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="diagram-info" class="diagram-info">
+                        Pase el cursor sobre un nodo para ver su descripción.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Patrones de Diseño y Principios SOLID</h3>
+                    <p class="card-text mb-6">El sistema está construido siguiendo patrones de diseño y principios de desarrollo de software robustos para garantizar que sea mantenible, escalable y eficiente. Haga clic en cada elemento para expandir y ver los detalles.</p>
+                    <div id="patterns-accordion"></div>
+                </div>
+            </section>
+
+            <!-- Implementation Section -->
+            <section id="implementation" class="content-section">
+                <h2 class="section-title">Implementación y Base de Datos</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">Estructura de Archivos</h3>
+                    <p class="card-text mb-6">Dado que Apps Script no tiene un sistema de carpetas, los archivos se organizan por convención de nomenclatura para modularidad.</p>
+                    <div class="code-block">
+                        <ul class="file-list">
+                            <li><span class="code-category">⚙️ Core:</span> Code.gs, Configuration.gs</li>
+                            <li><span class="code-category">🤖 AI:</span> GeminiService.gs, PromptBuilder.gs</li>
+                            <li><span class="code-category">💾 Database:</span> DatabaseService.gs, ChatHistoryDB.gs</li>
+                            <li><span class="code-category">📊 Data:</span> DataService.gs, SheetsRepository.gs</li>
+                            <li><span class="code-category">📈 Analytics:</span> AnalyticsEngine.gs, MetricsAnalyzer.gs</li>
+                            <li><span class="code-category">🎨 UI:</span> Sidebar.html, Client.html, Styles.html</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Sistema de Base de Datos en Google Sheets</h3>
+                    <p class="card-text mb-6">El sistema utiliza hojas de cálculo de Google Sheets como una base de datos NoSQL. Se crean varias hojas con el prefijo `_` para almacenar datos operativos. Seleccione una tabla para ver su esquema.</p>
+                    
+                    <div class="tabs-nav">
+                        <nav id="db-tabs" aria-label="Tabs"></nav>
+                    </div>
+                    <div id="db-content"></div>
+                </div>
+            </section>
+
+            <!-- Usage Section -->
+            <section id="usage" class="content-section">
+                <h2 class="section-title">Uso y Mantenimiento</h2>
+                
+                <div class="card">
+                    <h3 class="card-title">Casos de Uso</h3>
+                    <p class="card-text mb-6">A continuación se muestran ejemplos de cómo el chatbot puede ser utilizado para obtener insights de marketing.</p>
+                    <div class="use-cases">
+                        <div class="use-case">
+                            <p class="use-case-title">Consulta de Métricas</p>
+                            <p class="use-case-text"><span class="font-medium">Usuario:</span> "¿Cuál es el CPA de CORTINA esta semana?"</p>
+                            <p class="use-case-text"><span class="font-medium">Respuesta IA:</span> "El CPA promedio es $111.6, 7% mejor que el objetivo. La tendencia es estable."</p>
+                        </div>
+                        <div class="use-case">
+                            <p class="use-case-title">Análisis Predictivo</p>
+                            <p class="use-case-text"><span class="font-medium">Usuario:</span> "Predice las ventas de la próxima semana"</p>
+                            <p class="use-case-text"><span class="font-medium">Respuesta IA:</span> "Predicción: 1,850-2,100 unidades. Riesgo: NEON muestra tendencia negativa (-15%)."</p>
+                        </div>
+                        <div class="use-case">
+                            <p class="use-case-title">Detección de Anomalías</p>
+                            <p class="use-case-text"><span class="font-medium">Alerta del Sistema:</span> "🚨 Anomalía Detectada: Spike en CPA (+45%) para PROYECTOR CONSOLA."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Métricas de Performance y KPIs</h3>
+                    <p class="card-text mb-6">El rendimiento del sistema se monitorea a través de KPIs clave para asegurar la eficiencia y la precisión.</p>
+                    <div class="chart-container">
+                        <canvas id="kpiChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/app.js"></script>
+    
+    <!-- Three.js Background Script -->
+    <script>
+        // Verificar si Three.js está cargado y inicializar el fondo 3D
+        function initThreeJSBackground() {
+            if (typeof THREE !== 'undefined') {
+                // Crear un script dinámico para cargar el módulo
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.innerHTML = `
+                    import('./js/threejs-background.js').catch(error => {
+                        console.warn('No se pudo cargar el fondo 3D:', error);
+                    });
+                `;
+                document.head.appendChild(script);
+            } else {
+                console.warn('Three.js no está disponible');
+            }
+        }
+        
+        // Intentar inicializar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initThreeJSBackground);
+        } else {
+            initThreeJSBackground();
+        }
+    </script>
+</body>
+</html>

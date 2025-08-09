@@ -1,0 +1,53 @@
+/* ==========================================================================
+   COMPONENTES DE LISTAS PERSONALIZADAS
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.tech-item:last-child {
+    border-bottom: none;
+}
+
+.tech-item:hover {
+    padding-left: var(--spacing-sm);
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.advantages-list {
+    list-style: none;
+    padding: 0;
+}
+
+.advantages-list li {
+    position: relative;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.advantages-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    top: var(--spacing-sm);
+    color: var(--primary-color);
+    font-weight: bold;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px var(--primary-color); }
+    to { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+} 

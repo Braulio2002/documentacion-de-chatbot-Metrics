@@ -1,0 +1,25 @@
+/* ==========================================================================
+   RESET Y BASE - ESTILOS FUNDAMENTALES
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background: transparent;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+} 

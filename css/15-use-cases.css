@@ -1,0 +1,65 @@
+/* ==========================================================================
+   COMPONENTES DE CASOS DE USO
+   Documentación Interactiva - Chatbot IA
+   ========================================================================== */
+
+.use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.use-case {
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--primary-color);
+    background: var(--bg-secondary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.use-case::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.use-case:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-glow);
+}
+
+.use-case:hover::before {
+    opacity: 0.05;
+}
+
+.use-case-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.use-case-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.use-case-text:last-child {
+    margin-bottom: 0;
+}
+
+.use-case-text .font-medium {
+    font-weight: 500;
+    color: var(--text-accent);
+} 
