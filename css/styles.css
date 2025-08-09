@@ -2,67 +2,1267 @@
    DOCUMENTACIÓN INTERACTIVA - CHATBOT IA
    Tema Oscuro 3D con Efectos Modernos
    
-   Este archivo importa todos los módulos CSS organizados por funcionalidad.
-   Cada módulo está en su propio archivo para mejor mantenibilidad y escalabilidad.
+   Este archivo contiene todos los estilos combinados para evitar problemas
+   de importación en Vercel y otros servidores.
    ========================================================================== */
 
 /* ==========================================================================
-   IMPORTS - MÓDULOS CSS
+   01. VARIABLES Y SISTEMA DE DISEÑO
    ========================================================================== */
 
-/* 01. Variables y Sistema de Diseño */
-@import url('01-variables.css');
+:root {
+    /* ===== PALETA DE COLORES ===== */
+    /* Colores principales */
+    --primary-color: #00d4ff;
+    --primary-light: #4ddbff;
+    --primary-dark: #0099cc;
+    --primary-glow: rgba(0, 212, 255, 0.25);
+    
+    /* Colores de fondo - Jerarquía de profundidad */
+    --bg-primary: #0a0a0a;        /* Fondo principal - más profundo */
+    --bg-secondary: #111111;       /* Fondo secundario */
+    --bg-tertiary: #1a1a1a;        /* Fondo terciario */
+    --bg-card: #1e1e1e;           /* Fondo de tarjetas */
+    --bg-sidebar: #0f0f0f;        /* Fondo del sidebar */
+    
+    /* Colores de texto - Jerarquía de importancia */
+    --text-primary: #ffffff;       /* Texto principal */
+    --text-secondary: #b3b3b3;     /* Texto secundario */
+    --text-muted: #808080;         /* Texto atenuado */
+    --text-accent: #00d4ff;        /* Texto de acento */
+    
+    /* Colores de acento - Para estados y categorías */
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
+    --accent-orange: #f97316;
+    --accent-green: #10b981;
+    --accent-yellow: #f59e0b;
+    
+    /* ===== SISTEMA DE SOMBRAS ===== */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px var(--primary-glow);
+    --shadow-glow-strong: 0 0 40px rgba(0, 212, 255, 0.5);
+    
+    /* ===== GRADIENTES ===== */
+    --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+    
+    /* ===== BORDES ===== */
+    --border-color: #333333;
+    --border-light: #404040;
+    --border-accent: #00d4ff;
+    
+    /* ===== SISTEMA DE TRANSICIONES ===== */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* ===== EFECTOS 3D ===== */
+    --transform-3d: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    --transform-hover: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+    
+    /* ===== ESPACIADO ===== */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* ===== BORDER RADIUS ===== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    
+    /* ===== TIPOGRAFÍA ===== */
+    --font-family: 'Inter', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.25rem;
+    
+    /* ===== Z-INDEX ===== */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
 
-/* 02. Reset y Estilos Base */
-@import url('02-reset-base.css');
+/* ==========================================================================
+   02. RESET Y BASE - ESTILOS FUNDAMENTALES
+   ========================================================================== */
 
-/* 03. Layout y Estructura Principal */
-@import url('03-layout.css');
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* 04. Sidebar y Navegación */
-@import url('04-sidebar.css');
+html {
+    scroll-behavior: smooth;
+}
 
-/* 05. Tipografía y Encabezados */
-@import url('05-typography.css');
+body {
+    font-family: var(--font-family);
+    background: transparent;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
 
-/* 06. Componentes Principales (Cards, Badges) */
-@import url('06-components.css');
+/* ==========================================================================
+   THREE.JS BACKGROUND - FONDO 3D INTERACTIVO
+   ========================================================================== */
 
-/* 07. Componentes de Diagrama */
-@import url('07-diagram.css');
+#threejs-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: transparent;
+    overflow: hidden;
+}
 
-/* 08. Componentes de Acordeón */
-@import url('08-accordion.css');
+#threejs-background canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1.0;
+    transition: opacity 0.5s ease;
+    filter: blur(0.1px);
+}
 
-/* 09. Componentes de Tabs */
-@import url('09-tabs.css');
+/* Efecto de overlay para mejorar legibilidad */
+#threejs-background::after {
+    display: none;
+}
 
-/* 10. Componentes de Tabla */
-@import url('10-tables.css');
+/* Animación de partículas flotantes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+    }
+}
 
-/* 11. Componentes de Timeline */
-@import url('11-timeline.css');
+/* Efectos de luz dinámicos */
+@keyframes lightPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
 
-/* 12. Componentes de Chart */
-@import url('12-charts.css');
+/* ==========================================================================
+   03. LAYOUT - ESTRUCTURA PRINCIPAL
+   ========================================================================== */
 
-/* 13. Componentes de Listas Personalizadas */
-@import url('13-lists.css');
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+}
 
-/* 14. Componentes de Código */
-@import url('14-code.css');
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
 
-/* 15. Componentes de Casos de Uso */
-@import url('15-use-cases.css');
+/* ==========================================================================
+   CONTENIDO PRINCIPAL
+   ========================================================================== */
+.main-content {
+    flex: 1;
+    padding: var(--spacing-lg);
+    background: transparent;
+    position: relative;
+    z-index: 2;
+}
 
-/* 16. Utilidades y Clases Helper */
-@import url('16-utilities.css');
+@media (min-width: 768px) {
+    .main-content {
+        margin-left: 0px;
+        padding: var(--spacing-xl) var(--spacing-2xl);
+    }
+}
 
-/* 17. Scrollbar Personalizada */
-@import url('17-scrollbar.css');
+@media (min-width: 1024px) {
+    .main-content {
+        padding: var(--spacing-2xl) var(--spacing-2xl);
+    }
+}
 
-/* 18. Responsive Design */
-@import url('18-responsive.css');
+/* ==========================================================================
+   SECCIONES DE CONTENIDO
+   ========================================================================== */
+.content-section {
+    display: none;
+    animation: fadeInUp 0.6s ease-out;
+}
 
-/* 19. Three.js Background - Fondo 3D Interactivo */
-@import url('19-threejs-background.css'); 
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   SISTEMA DE GRID
+   ========================================================================== */
+.grid {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================================
+   04. SIDEBAR - NAVEGACIÓN LATERAL
+   ========================================================================== */
+
+.sidebar {
+    width: 100%;
+    background: var(--gradient-dark);
+    color: var(--text-primary);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-xl);
+    border-right: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 0 16px 16px 0;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de línea superior del sidebar */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 280px;
+        padding: var(--spacing-xl);
+        position: fixed;
+        height: 100vh;
+    }
+}
+
+/* Header del sidebar */
+.sidebar-header {
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    z-index: var(--z-sticky);
+}
+
+.sidebar-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 0 20px var(--primary-glow);
+}
+
+.sidebar-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Navegación del sidebar */
+.nav-list {
+    list-style: none;
+    position: relative;
+    z-index: var(--z-sticky);
+}
+
+.nav-link {
+    display: block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto de deslizamiento en hover */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: left var(--transition-normal);
+    z-index: -1;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary);
+    transform: translateX(10px) translateY(-3px) scale(1.06);
+    box-shadow: 
+        0 12px 35px rgba(0, 212, 255, 0.4),
+        0 0 0 1px rgba(0, 212, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.4);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    left: 0;
+}
+
+.nav-link:hover {
+    background: rgba(0, 212, 255, 0.2);
+}
+
+.nav-link.active {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: var(--shadow-glow-strong);
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: var(--spacing-lg);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   05. TIPOGRAFÍA Y ENCABEZADOS
+   ========================================================================== */
+
+.section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    padding-bottom: var(--spacing-md);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* ==========================================================================
+   06. COMPONENTES PRINCIPALES
+   ========================================================================== */
+
+/* ===== COMPONENTES DE TARJETAS ===== */
+.card {
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+    background: rgba(30, 30, 30, 0.9);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto de línea superior en hover */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 
+        0 35px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 212, 255, 0.4),
+        0 0 50px rgba(0, 212, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(30, 30, 30, 0.98);
+    border-color: rgba(0, 212, 255, 0.4);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ===== COMPONENTES DE BADGES ===== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--gradient-primary);
+    color: var(--bg-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-xl);
+    margin-right: var(--spacing-sm);
+    box-shadow: 
+        0 4px 12px rgba(0, 212, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo en hover */
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--transition-normal);
+}
+
+.badge:hover::before {
+    left: 100%;
+}
+
+/* ==========================================================================
+   07. COMPONENTES DE DIAGRAMA
+   ========================================================================== */
+
+.diagram-container {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--bg-tertiary);
+    position: relative;
+    overflow: hidden;
+}
+
+.diagram-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, var(--primary-glow) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    position: relative;
+    z-index: var(--z-sticky);
+}
+
+@media (min-width: 768px) {
+    .diagram-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.diagram-node {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(30, 30, 30, 0.95);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.diagram-node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.diagram-node:hover {
+    background: rgba(0, 212, 255, 0.25);
+    border-color: rgba(0, 212, 255, 0.5);
+    box-shadow: 
+        0 20px 45px rgba(0, 212, 255, 0.4),
+        0 0 0 1px rgba(0, 212, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-15px) scale(1.1);
+}
+
+.diagram-node:hover::before {
+    opacity: 0.1;
+}
+
+.diagram-node.highlight {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.diagram-info {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--text-accent);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 500;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-accent);
+}
+
+/* ==========================================================================
+   08. COMPONENTES DE ACORDIÓN
+   ========================================================================== */
+
+.accordion-item {
+    margin-bottom: var(--spacing-md);
+}
+
+.accordion-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.accordion-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: left var(--transition-normal);
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.accordion-toggle:hover {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 
+        0 12px 35px rgba(0, 212, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
+.accordion-toggle:hover::before {
+    left: 0;
+}
+
+.accordion-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.accordion-arrow {
+    transition: transform var(--transition-normal);
+    color: var(--text-accent);
+}
+
+.accordion-toggle.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.accordion-content.active {
+    max-height: 300px;
+    padding: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   09. COMPONENTES DE TABS
+   ========================================================================== */
+
+.tabs-nav {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.tabs-nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+}
+
+.tabs-nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+.tab-button {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-normal);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    position: relative;
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.tab-button:hover {
+    color: var(--text-accent);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.tab-button.active {
+    color: var(--text-accent);
+}
+
+.tab-button.active::before {
+    transform: scaleX(1);
+}
+
+/* ==========================================================================
+   10. COMPONENTES DE TABLA
+   ========================================================================== */
+
+.table-container {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: var(--bg-tertiary);
+}
+
+.table th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table td {
+    padding: var(--spacing-lg) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover td {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.table td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   11. COMPONENTES DE TIMELINE
+   ========================================================================== */
+
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+}
+
+.timeline-dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: bold;
+    z-index: var(--z-sticky);
+    margin-right: var(--spacing-lg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 20px rgba(0, 212, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.1; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+.timeline-dot.completed {
+    background: var(--gradient-primary);
+}
+
+.timeline-dot.in-progress {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+}
+
+.timeline-dot.planned {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.timeline-content h4 {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   12. COMPONENTES DE CHART
+   ========================================================================== */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 350px;
+    max-height: 400px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   13. COMPONENTES DE LISTAS PERSONALIZADAS
+   ========================================================================== */
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.tech-item:last-child {
+    border-bottom: none;
+}
+
+.tech-item:hover {
+    padding-left: var(--spacing-sm);
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.advantages-list {
+    list-style: none;
+    padding: 0;
+}
+
+.advantages-list li {
+    position: relative;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.advantages-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    top: var(--spacing-sm);
+    color: var(--primary-color);
+    font-weight: bold;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px var(--primary-color); }
+    to { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+}
+
+/* ==========================================================================
+   14. COMPONENTES DE CÓDIGO
+   ========================================================================== */
+
+.code-block {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.code-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-list li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.file-list li:last-child {
+    border-bottom: none;
+}
+
+.file-list li:hover {
+    padding-left: var(--spacing-sm);
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.code-category {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* ==========================================================================
+   15. COMPONENTES DE CASOS DE USO
+   ========================================================================== */
+
+.use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.use-case {
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--primary-color);
+    background: var(--bg-secondary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.use-case::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.use-case:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-glow);
+}
+
+.use-case:hover::before {
+    opacity: 0.05;
+}
+
+.use-case-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.use-case-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.use-case-text:last-child {
+    margin-bottom: 0;
+}
+
+.use-case-text .font-medium {
+    font-weight: 500;
+    color: var(--text-accent);
+}
+
+/* ==========================================================================
+   16. UTILIDADES - CLASES HELPER
+   ========================================================================== */
+
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: var(--spacing-md); }
+.mb-6 { margin-bottom: var(--spacing-lg); }
+.mb-8 { margin-bottom: var(--spacing-xl); }
+.p-4 { padding: var(--spacing-md); }
+.p-6 { padding: var(--spacing-lg); }
+.rounded-lg { border-radius: var(--radius-md); }
+.rounded-xl { border-radius: var(--radius-lg); }
+.shadow-md { box-shadow: var(--shadow-md); }
+
+/* ==========================================================================
+   EFECTOS ADICIONALES
+   ========================================================================== */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-normal);
+}
+
+.glow-effect:hover::after {
+    opacity: 0.1;
+}
+
+/* ==========================================================================
+   17. SCROLLBAR PERSONALIZADA
+   ========================================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* ==========================================================================
+   SELECCIÓN DE TEXTO
+   ========================================================================== */
+::selection {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+/* ==========================================================================
+   18. RESPONSIVE - DISEÑO ADAPTATIVO
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: var(--spacing-md);
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .diagram-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: var(--spacing-lg);
+    }
+    
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    #threejs-background canvas {
+        opacity: 0.75;
+    }
+    
+    .sidebar {
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
+    
+    .main-content {
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+    }
+    
+    .card {
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
+    
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+/* ==========================================================================
+   EFECTOS DE SCROLL SUAVES
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN PARA DISPOSITIVOS DE BAJA POTENCIA
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    #threejs-background canvas {
+        opacity: 0.6;
+    }
+    
+    .card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        transform: translateX(6px) translateY(-2px) scale(1.03);
+    }
+    
+    .diagram-node:hover {
+        transform: translateY(-8px) scale(1.05);
+    }
+} 
